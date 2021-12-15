@@ -1,6 +1,7 @@
 import pandas as pd 
 import matplotlib.pyplot as plt
 
+
 #Letra A
 Titanic = pd.read_csv("titanic.csv")
 #print(Titanic.head(10))
@@ -37,7 +38,7 @@ Titanic['Sexo']= Titanic['Sexo'].replace(['female'],['FEMININO'])
 
 #Letra G
 auxTitanic = Titanic.loc[Titanic["Survived"]== 1]
-auxTitanic = Titanic.groupby(['Survived','Pclass']).count()
+Titanic = Titanic.groupby(['Survived','Pclass']).count()
 print(auxTitanic)
 
 #Letra H
@@ -53,6 +54,6 @@ plt.show()
 
 #Letra J
 
-
-
-
+Titaexcel=pd.ExcelWriter('Titanicexcel.xlsx')
+Titanic.to_excel(Titaexcel, index = False)
+Titaexcel.save()
